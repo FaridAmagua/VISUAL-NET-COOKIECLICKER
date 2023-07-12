@@ -1,0 +1,52 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ControlTemplate x:Key="BotonGalleta" TargetType="Button">
+        <Grid>
+            <VisualStateManager.VisualStateGroups>
+                <VisualStateGroup Name="CommonStates">
+                    <VisualState Name="Normal"/>
+                    <VisualState Name="MouseOver"/>
+                    <VisualState Name="Pressed"/>
+                </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
+            <Ellipse Name="MiFormaVisual"
+                     Width="200"
+                     Height="200">
+                <Ellipse.Fill>
+                    <ImageBrush ImageSource="/galleta.png"/>
+                </Ellipse.Fill>
+            </Ellipse>
+            <ContentPresenter
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"/>
+        </Grid>
+    </ControlTemplate>
+    <ControlTemplate x:Key="BotonEdificio" TargetType="Button">
+        <Grid>
+            <VisualStateManager.VisualStateGroups>
+                <VisualStateGroup Name="CommonStates">
+                    <VisualState Name="Normal"/>
+                    <VisualState Name="MouseOver"/>
+                    <VisualState Name="Pressed"/>
+                </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
+            <Rectangle Name="MiFormaVisual" Fill="#7F000000">
+            </Rectangle>
+            <ContentPresenter
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"/>
+        </Grid>
+    </ControlTemplate>
+    <DataTemplate x:Key="PlantillaEdificio">
+        <Border BorderThickness="1" BorderBrush="Black" Width="200">
+            <StackPanel Background="#7F000000" Margin="5">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Label Content="Cantidad: " FontSize="15" Foreground="#FFFF8028"/>
+                    <TextBlock x:Name="tb_CantidadAutoClickers" Text="{Binding Cantidad}" FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Right" Foreground="White"/>
+                    <Label Content="Precio: " FontSize="15" Foreground="#FFFF8028"/>
+                    <TextBlock x:Name="tb_PrecioAutoClickers" Text="{Binding Precio}" FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Right" Foreground="White"/>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+    </DataTemplate>
+</ResourceDictionary>
