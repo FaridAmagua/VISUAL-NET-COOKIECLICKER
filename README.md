@@ -1,7 +1,6 @@
 # VISUAL-NET-COOKIECLICKER
 1.0 V cookie clicker
 Data Base : 
-
 CREATE DATABASE IF NOT EXISTS CookieClicker;
 USE CookieClicker;
 -- DROPS
@@ -10,7 +9,7 @@ DROP TABLE IF EXISTS tiendas;
 DROP TABLE IF EXISTS cromos;
 DROP TABLE IF EXISTS cromos_tiendas;
 
-CREATE TABLE USUARIO(
+CREATE TABLE USUARIOS(
             id_usuario INT primary key auto_increment,
             nick VARCHAR(30) NOT NULL UNIQUE,
             pass varchar(60) NOT NULL,
@@ -18,19 +17,19 @@ CREATE TABLE USUARIO(
             n_galletas INT NOT NULL default 0
             );
             
-CREATE TABLE EDIFICIO(
+CREATE TABLE EDIFICIOS(
             id_edificio INT primary key auto_increment,
             nombre VARCHAR(30) NOT NULL,
             precio_inical INT NOT NULL
             );
             
-CREATE TABLE USUARIO_EDIFICO(
+CREATE TABLE USUARIO_EDIFICOS(
 				id_usuario_edificio int primary key auto_increment,
                 id_usuario int not null,
                 id_edificio int not null,
                 cantidad int default 1,
-                foreign key (id_usuario) references USUARIO(id_usuario),
-                foreign key(id_edificio) references EDIFICIO(id_edificio)
+                foreign key (id_usuario) references USUARIOS(id_usuario),
+                foreign key(id_edificio) references EDIFICIOS(id_edificio)
             );
             
 
@@ -50,11 +49,11 @@ pa:
 BEGIN
 
 
-insert into usuario(nick,pass,t_usuario) values(_nick,_pass,_t_usuario);
+insert into USUARIOS(nick,pass,t_usuario) values(_nick,_pass,_t_usuario);
 set res = 0;
 
     
-END$$
+END$$de
 DELIMITER ;
 
 DELIMITER $$
@@ -64,18 +63,18 @@ BEGIN
 declare usuarios varchar(30);declare contrasena varchar(30); declare tipo_usuario varchar(10);declare aux int;
 set usuarios = null; set contrasena = null; set tipo_usuario=null; set aux = null;
 
-select  COUNT(*) from usuario where usuario.nick = _nick and usuario.pass = _pass and t_usuario=_t_usuario into aux;
+select  COUNT(*) from USUARIOS where USUARIOS._nick = _nick and usuario.pass = _pass and t_usuario=_t_usuario into aux;
 if aux = 1 then
 set res4 = 1;
 else 
 set res4 = -1;
-end if;
+end if; 
 
 
 END$$
 DELIMITER ;
 
-select count(*)  from usuario where nick = 'admin'limit 1;
+select count(*)  from USUARIOS where nick = 'admin'limit 1;
 
 
 
